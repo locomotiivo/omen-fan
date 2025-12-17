@@ -238,6 +238,9 @@ def configure_cli(temp_curve, speed_curve, idle_speed, poll_interval, view):
     if not all(temp_curve[i] <= temp_curve[i + 1] for i in range(len(temp_curve) - 1)):
         raise click.UsageError("TEMP_CURVE must be in ascending order")
 
+    doc["service"]["TEMP_CURVE"] = temp_curve
+    doc["service"]["SPEED_CURVE"] = speed_curve
+
     with open(CONFIG_FILE, "w") as file:
         file.write(tomlkit.dumps(doc))
 
