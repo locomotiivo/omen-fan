@@ -255,7 +255,7 @@ def service_cli(arg):
                 print(f"  omen-fan service is already running with PID:{ipc.read()}")
         else:
             bios_control(False)
-            subprocess.Popen("omen-fand")
+            subprocess.Popen(["python", "omen-fand.py"])
             print("  omen-fan service has been started")
 
     elif arg in ["stop", "0"]:
